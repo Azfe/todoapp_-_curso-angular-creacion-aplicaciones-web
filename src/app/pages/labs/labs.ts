@@ -18,11 +18,12 @@ export class Labs {
   age: number = 41;
   disabled : boolean = true;
   imgUrl: string = 'https://picsum.photos/400/300';
-  person = {
+  person = signal( {
     name: 'Alex',
     age: 41,
     avatar: 'https://thispersondoesnotexist.com/'
-  }
+  });
+
   onButtonClick() {
     alert('¡Hola! Has hecho clic en el botón.');
   }
@@ -68,4 +69,13 @@ export class Labs {
       cover: 'https://picsum.photos/200/200?random=3'
     }
   ]);
+
+  changeAge(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const newValue = input.value;
+    this.person.update(prevState => ({
+      ...prevState,
+      age: Number(newValue)
+    }));
+  }
 }
