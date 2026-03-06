@@ -32,4 +32,10 @@ export class Labs {
     const input = event.target as HTMLInputElement;
     this.name = input.value;
   }
+
+  keydownHandler(event: KeyboardEvent) {
+    const input = event.target as HTMLInputElement;
+    this.name = input.value;
+    console.log(this.name);
+  }
 }

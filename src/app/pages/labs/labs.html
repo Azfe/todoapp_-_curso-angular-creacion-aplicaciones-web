@@ -31,4 +31,16 @@
     <input type="number" [value]="person.age" (change)="changeHandler($event)">
   </div>
 
+  <div>
+    <p>(keydown)</p>
+    <input type="text" [value]="person.name" (keydown)="keydownHandler($event)" placeholder="Escribe algo">
+    <p>Has escrito: {{ name }}</p>
+  </div>
+
+  <div>
+    <p>(keydown Shift + T)</p>
+    <input type="text" [value]="person.name" (keydown.shift.t)="onButtonClick()">
+    <p>Has escrito: {{ name }}</p>
+  </div>
+
 </div>
