@@ -3,3 +3,11 @@
   margin: 0 auto;
   padding: 20px;
 }
+
+.box {
+  background-color: red;
+  border: 1px solid #ccc;
+  display: block;
+  height: 10px;
+  margin-bottom: 20px;
+}

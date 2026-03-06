@@ -20,6 +20,7 @@ export class Home {
     nonNullable: true,
     validators: [
       Validators.required,
+      Validators.pattern(/\S/),
       (control) => control.value.trim() === '' ? { required: true } : null
     ]
    });
@@ -27,8 +28,10 @@ export class Home {
   changeHandler() {
     if(this.newTaskControl.valid) {
       const value = this.newTaskControl.value.trim();
-      this.addTask(value);
-      this.newTaskControl.setValue('');
+      if(value !== '') {
+        this.addTask(value);
+        this.newTaskControl.setValue('');
+      }
     }
   }
 
