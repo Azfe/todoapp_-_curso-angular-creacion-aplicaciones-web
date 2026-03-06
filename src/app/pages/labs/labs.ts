@@ -44,4 +44,28 @@ export class Labs {
     const input = event.target as HTMLInputElement;
     this.nameSignal.set(input.value);
   }
+
+  recordCollection = signal ([
+    {
+      id: 1,
+      title: 'Album 1',
+      artist: 'Artist 1',
+      year: 2000,
+      cover: 'https://picsum.photos/200/200?random=1'
+    },
+    {
+      id: 2,
+      title: 'Album 2',
+      artist: 'Artist 2',
+      year: 2005,
+      cover: 'https://picsum.photos/200/200?random=2'
+    },
+    {
+      id: 3,
+      title: 'Album 3',
+      artist: 'Artist 3',
+      year: 2010,
+      cover: 'https://picsum.photos/200/200?random=3'
+    }
+  ]);
 }

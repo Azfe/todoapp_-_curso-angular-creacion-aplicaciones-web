@@ -48,5 +48,18 @@
 
   <input type="text" [value]="nameSignal()" (change)="changeNameSignalHandler($event)">
 
+  <hr>
+
+  <ul>
+    <li *ngFor="let record of recordCollection(); index as i">
+      <h3>{{ record.title }}</h3>
+      <small>Código índice: {{ i + 1 }}</small>
+      <p>Artista: {{ record.artist }}</p>
+      <p>Año: {{ record.year }}</p>
+      <img [src]="record.cover" [alt]="record.title" width="200">
+    </li>
+    <p>Total de álbumes: {{ recordCollection().length }}</p>
+  </ul>
+
 
 </div>
