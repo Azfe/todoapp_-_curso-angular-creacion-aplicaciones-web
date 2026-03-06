@@ -1,9 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-labs',
-  imports: [CommonModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './labs.html',
   styleUrl: './labs.css',
 })
@@ -14,15 +15,25 @@ export class Labs {
     { id: 2, title: 'Lavar el coche', completed: true },
     { id: 3, title: 'Estudiar Angular', completed: false }
   ];
+
   name: string = 'Alex';
   age: number = 41;
   disabled : boolean = true;
   imgUrl: string = 'https://picsum.photos/400/300';
+
   person = signal( {
     name: 'Alex',
     age: 41,
     avatar: 'https://thispersondoesnotexist.com/'
   });
+
+  colorCtrl = new FormControl('#ff0000');
+
+    constructor() {
+    this.colorCtrl.valueChanges.subscribe(value => {
+      console.log('Color changed:', value);
+    });
+  }
 
   onButtonClick() {
     alert('¡Hola! Has hecho clic en el botón.');
