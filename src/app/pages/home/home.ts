@@ -13,4 +13,23 @@ export class Home {
     { id: 2, title: 'Lavar el coche', completed: true },
     { id: 3, title: 'Estudiar Angular', completed: false }
   ])
+
+  changeHandler(event: Event) {
+    console.log(event);
+    const input = event.target as HTMLInputElement;
+    const newTask = input.value;
+    this.tasks.update((tasks) => [
+      ...tasks,
+      {
+        id: tasks.length + 1,
+        title: newTask,
+        completed: false
+      }
+    ]);
+    input.value = '';
+  }
+
+  deleteTask(taskId: number) {
+    this.tasks.update((tasks) => tasks.filter(task => task.id !== taskId));
+  }
 }
