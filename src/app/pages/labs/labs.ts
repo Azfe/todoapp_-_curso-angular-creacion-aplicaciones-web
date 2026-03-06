@@ -16,4 +16,11 @@ export class Labs {
   ];
   name: string = 'Alex';
   age: number = 41;
+  disabled : boolean = true;
+  imgUrl: string = 'https://picsum.photos/400/300';
+  person = {
+    name: 'Alex',
+    age: 41,
+    avatar: 'https://thispersondoesnotexist.com/'
+  }
 }

@@ -14,5 +14,8 @@
 
 <hr>
 
-<img src="" alt="">
-<input type="text" value="">
+<img [src]="imgUrl" alt="Imagen de ejemplo"> <br>
+<input type="number" [value]="person.age">
+<button [disabled]="disabled">Click me</button>
+<p>{{ person.name }}, {{ person.age }} años</p>
+<img [src]="person.avatar" alt="Avatar de {{ person.name }}">
