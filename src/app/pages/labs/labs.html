@@ -62,6 +62,7 @@
   </ul>
 
   <hr>
+
   <h2>ngIf</h2>
   <div *ngIf="1 !== 1">
     <p>My content</p>
@@ -79,5 +80,15 @@
     <p>¡Hola, {{ person().name }}! ¡Eres menor de edad!</p>
   </ng-template>
 
+  <h2>ngSwitch</h2>
+
+  <input type="string" [value]="person().name" (change)="changeName($event)">
+
+  <div [ngSwitch]="person().name">
+    <p *ngSwitchCase="'Alex'">¡Hola, Alex!</p>
+    <p *ngSwitchCase="'Ana'">¡Hola, Ana!</p>
+    <p *ngSwitchCase="'Maria'">¡Hola, Maria!</p>
+    <p *ngSwitchDefault>¡Hola, desconocido!</p>
+  </div>
 
 </div>

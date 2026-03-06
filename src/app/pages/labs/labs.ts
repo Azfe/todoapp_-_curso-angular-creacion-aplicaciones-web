@@ -78,4 +78,13 @@ export class Labs {
       age: Number(newValue)
     }));
   }
+
+  changeName(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const newValue = input.value;
+    this.person.update(prevState => ({
+      ...prevState,
+      name: newValue
+    }));
+  }
 }
