@@ -12,8 +12,8 @@ export class Home {
   tasks = signal<Task[]>([
     { id: 1, title: 'Comprar leche', completed: false },
     { id: 2, title: 'Lavar el coche', completed: true },
-    { id: 3, title: 'Estudiar Angular', completed: false }
-  ])
+    { id: 3, title: 'Estudiar Angular', completed: false },
+  ]);
 
   changeHandler(event: Event) {
     console.log(event);
@@ -21,15 +21,6 @@ export class Home {
     const newTask = input.value;
     this.addTask(newTask);
     input.value = '';
-    // this.tasks.update((tasks) => [
-    //   ...tasks,
-    //   {
-    //     id: tasks.length + 1,
-    //     title: newTask,
-    //     completed: false
-    //   }
-    // ]);
-    // input.value = '';
   }
 
   addTask(newTask: string) {
@@ -38,12 +29,23 @@ export class Home {
       {
         id: Date.now(),
         title: newTask,
-        completed: false
-      }
+        completed: false,
+      },
     ]);
   }
 
   deleteTask(taskId: number) {
-    this.tasks.update((tasks) => tasks.filter(task => task.id !== taskId));
+    this.tasks.update((tasks) => tasks.filter((task) => task.id !== taskId));
+  }
+
+  updateTaskStatus(taskId: number, completed: boolean) {
+    this.tasks.update((tasks) => {
+      return tasks.map((task) => {
+        if (task.id === taskId) {
+          return { ...task, completed: !task.completed };
+        }
+        return task;
+      });
+    });
   }
 }
