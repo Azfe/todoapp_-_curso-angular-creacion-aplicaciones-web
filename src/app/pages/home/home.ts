@@ -1,5 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Task } from '../../models/task.model';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './home.css',
 })
 export class Home {
-  tasks = signal ([
+  tasks = signal<Task[]>([
     { id: 1, title: 'Comprar leche', completed: false },
     { id: 2, title: 'Lavar el coche', completed: true },
     { id: 3, title: 'Estudiar Angular', completed: false }
@@ -18,15 +19,28 @@ export class Home {
     console.log(event);
     const input = event.target as HTMLInputElement;
     const newTask = input.value;
+    this.addTask(newTask);
+    input.value = '';
+    // this.tasks.update((tasks) => [
+    //   ...tasks,
+    //   {
+    //     id: tasks.length + 1,
+    //     title: newTask,
+    //     completed: false
+    //   }
+    // ]);
+    // input.value = '';
+  }
+
+  addTask(newTask: string) {
     this.tasks.update((tasks) => [
       ...tasks,
       {
-        id: tasks.length + 1,
+        id: Date.now(),
         title: newTask,
         completed: false
       }
     ]);
-    input.value = '';
   }
 
   deleteTask(taskId: number) {
