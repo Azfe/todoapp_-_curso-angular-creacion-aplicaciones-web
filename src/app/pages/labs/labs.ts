@@ -23,4 +23,13 @@ export class Labs {
     age: 41,
     avatar: 'https://thispersondoesnotexist.com/'
   }
+  onButtonClick() {
+    alert('¡Hola! Has hecho clic en el botón.');
+  }
+
+  changeHandler(event: Event) {
+    console.log(event);
+    const input = event.target as HTMLInputElement;
+    this.name = input.value;
+  }
 }
