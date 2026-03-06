@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -37,5 +37,11 @@ export class Labs {
     const input = event.target as HTMLInputElement;
     this.name = input.value;
     console.log(this.name);
+  }
+  nameSignal = signal('Alex');
+
+  changeNameSignalHandler(event: Event) {
+    const input = event.target as HTMLInputElement;
+    this.nameSignal.set(input.value);
   }
 }

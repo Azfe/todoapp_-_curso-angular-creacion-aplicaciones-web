@@ -43,4 +43,10 @@
     <p>Has escrito: {{ name }}</p>
   </div>
 
+  <h1>Signals</h1>
+  <p>Hola {{ nameSignal() }}</p>
+
+  <input type="text" [value]="nameSignal()" (change)="changeNameSignalHandler($event)">
+
+
 </div>
