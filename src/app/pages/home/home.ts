@@ -1,4 +1,4 @@
-import { Component, signal, computed } from '@angular/core';
+import { Component, signal, computed, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Task } from '../../models/task.model';
 import { ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
@@ -36,6 +36,21 @@ export class Home {
       (control) => control.value.trim() === '' ? { required: true } : null
     ]
    });
+
+   constructor() {
+      effect(() => {
+        const tasks = this.tasks();
+        console.log('Tasks updated:', tasks);
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+      });
+   }
+
+   ngOnInit() {
+    const tasksFromStorage = localStorage.getItem('tasks');
+    if (tasksFromStorage) {
+      this.tasks.set(JSON.parse(tasksFromStorage));
+    }
+   }
 
   changeHandler() {
     if(this.newTaskControl.valid) {
