@@ -74,13 +74,13 @@
       <!-- Remove this if you don't implement routing -->
       <ul class="filters">
         <li>
-          <a (click)="changeFilter('all')" [class.selected]="filter() === 'all'">All</a>
+          <a href="#" (click)="changeFilter('all'); $event.preventDefault()" [class.selected]="filter() === 'all'">All</a>
         </li>
         <li>
-          <a (click)="changeFilter('pending')" [class.selected]="filter() === 'pending'">Pending</a>
+          <a href="#" (click)="changeFilter('pending'); $event.preventDefault()" [class.selected]="filter() === 'pending'">Pending</a>
         </li>
         <li>
-          <a (click)="changeFilter('completed')" [class.selected]="filter() === 'completed'">Completed</a>
+          <a href="#" (click)="changeFilter('completed'); $event.preventDefault()" [class.selected]="filter() === 'completed'">Completed</a>
         </li>
       </ul>
 
