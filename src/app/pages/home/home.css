@@ -257,6 +257,9 @@
 }
 
 .footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 1rem 1.5rem;
   height: 20px;
   text-align: center;
@@ -293,6 +296,7 @@
   text-decoration: none;
   border: 1px solid transparent;
   border-radius: 3px;
+  cursor: pointer;
 }
 
 .filters li a:hover {

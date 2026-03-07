@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Task } from '../../models/task.model';
 import { ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
@@ -15,6 +15,18 @@ export class Home {
     { id: 2, title: 'Lavar el coche', completed: true },
     { id: 3, title: 'Estudiar Angular', completed: false },
   ]);
+
+  filter = signal<'all' | 'pending' | 'completed'>('all');
+  tasksByFilter = computed(() => {
+    const filterValue = this.filter();
+    const tasks = this.tasks();
+    if (filterValue === 'pending') {
+      return tasks.filter(task => !task.completed);
+    } else if (filterValue === 'completed') {
+      return tasks.filter(task => task.completed);
+    }
+    return tasks;
+  })
 
   newTaskControl = new FormControl('', {
     nonNullable: true,
@@ -92,5 +104,9 @@ export class Home {
         return task;
       });
     });
+  }
+
+  changeFilter(newFilter: 'all' | 'pending' | 'completed') {
+    this.filter.set(newFilter);
   }
 }
