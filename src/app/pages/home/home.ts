@@ -60,4 +60,37 @@ export class Home {
       });
     });
   }
+
+  updateTaskEditingMode(taskId: number, editing: boolean) {
+    this.tasks.update(prevState => {
+      return prevState.map((task) => {
+        if (task.id === taskId) {
+          return {
+            ...task,
+            editing: true
+          };
+        }
+        return {
+          ...task,
+          editing: false
+        };
+      });
+    });
+  }
+
+  updateTaskText(taskId: number, event: Event) {
+    const input = event.target as HTMLInputElement;
+    this.tasks.update(prevState => {
+      return prevState.map((task) => {
+        if (task.id === taskId) {
+          return {
+            ...task,
+            title: input.value,
+            editing: false
+          };
+        }
+        return task;
+      });
+    });
+  }
 }
